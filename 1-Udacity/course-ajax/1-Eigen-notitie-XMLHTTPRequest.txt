@@ -1,0 +1,84 @@
+Variabele
+01::const asyncRequestObject = new XMLHttpRequest();
+The XHR's .open() method verstuurd geen request. Het voorbereid de omgeving en geeft het object/etc de nodige informatie, wanneer het request uiteindelijk zal worden verstuurd
+
+
+Open: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/open
+02::asyncRequestObject.open('GET', 'https://unsplash.com', true);
+
+--extra
+Voorbereiden:  XMLHttpRequest.open() -> https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/open
+::const myAsyncRequest = new XMLHttpRequest();   
+::myAsyncRequest.open('GET', 'https://udacity.com/', true);
+
+Door 'false' te plaatsen als derde parameter, maakt de XHR request synchronous
+Hierdoor zal Javascript pauzeren totdat de volledige request is uitgevoerd, dit heet ook wel 'blocking'.
+Dit wil je niet omdat de XML request in de tijd dat het verbind met een API server, de rest van de webpagina had kunnen laden.
+
+Dit is dom en nooit meer 'false' plaatsen als derde optie, dit verslaat het doel van XHR.
+In plaats daarvan, plaats 'true', als derde argument, of laat het leeg(default is dan ook 'true'). Maar plaats toch maar true.
+extra--
+
+
+Verzenden 
+03::asyncRequestObject.send();
+Om een request te versturen maak je gebruik van 
+::asyncRequestObject.send();
+
+Je ziet niet dat het wordt verstuurd, daarom moet je de sessie 'recorden'
+In de console's dev tools van de webbrowser, kun je vervolgens de 'netwerk -> headers' tab bekijken
+
+
+Onload
+The XMLHttpRequestEventTarget.onload is de functie die wordt opgeroepen wanneer een XMLHttpRequest transactie succesvol is uitgevoerd
+De onload property wordt gelinked aan een object van een functie die, zal uitvoeren
+
+Want wanneer onload niet is ingevoerd als code, dan zal de request data terug sturen in bijvoorbeeld de headers, maar je zal er niets van zien, met het blote oog..
+
+04::function handleSuccess () {
+    // in de functie, is `this` de waarde van het XHR object
+    // this.responseText heeft de waarde/response van de webserver, responseText is het zelfde als .innerHTML.text
+    console.log( this.responseText ); // the HTML van https://unsplash.com/
+}
+asyncRequestObject.onload = handleSuccess;
+
+
+Error Handling:
+Wanneer er wat gebeurd en de request niet kan worden uitgevoerd, Dan maak je gebruik van de 'onerror'
+
+
+05::function handleError () {
+    // in de functie, is `this` de waarde van het XHR object
+    console.log( 'Een error tegengekomen');
+}
+asyncRequestObject.onerror = handleError;
+
+
+
+On success
+En natuurlijk wanneer succesvol de request succesvol is verstuurd (en teruggekomen) dan:
+06::asyncRequestObject.onload = handleSuccess;
+
+function handleSuccess () { 
+  // in de functie, is `this` de waarde van het XHR object
+  console.log( this.responseText ); 
+// the HTML of https://unsplash.com/
+}
+
+
+
+Alles samen op een gestructureerd manier:
+
+function handleSuccess () { 
+  console.table(this.responseText); //de waarde van de HTML van https://unsplash.com/
+}
+
+function handleError () { 
+  console.log( 'Een error error occurred' + this.responeText ); //met de waarde van de request header voor een beter troubleshoot..
+}
+
+const asyncRequestObject = new XMLHttpRequest();
+asyncRequestObject.open('GET', 'https://unsplash.com');
+asyncRequestObject.onload = handleSuccess;
+asyncRequestObject.onerror = handleError;
+asyncRequestObject.send();

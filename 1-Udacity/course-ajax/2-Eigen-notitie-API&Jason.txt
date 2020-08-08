@@ -1,0 +1,22 @@
+In het eerder voorbeeld is de HTML van de website opgehaald en dit kost onnodig data, wat wanneer je een specifiek gedeelte kan ophalen en
+jou bezoeker niet wordt ballast met extra netwerk data je programmeer onkunde?
+
+
+JSON
+
+In plaats van het oproepen van de 'base url', maak je een programma die bijvoorbeeld de foto's ophaalt met de Unsplash API en de relevante artikelen van de New York Times.
+
+Wanneer je een request maakt met een API dat JSON terug stuurt, 
+hoef je alleen de JSON response converten naar een Javascript object. 
+
+Dit kun je doen met: 
+
+::JSON.parse();
+
+Nu kun je bijvoorbeeld de 'onload' functie een JSON respone laten afvangen, want onload is een succesvol response (200)
+
+::function handleSuccess () {
+const data = JSON.parse( this.responseText ); // converteer data van JSON naar een avaScript object
+console.log( data );
+} asyncRequestObject.onload = handleSuccess;
+

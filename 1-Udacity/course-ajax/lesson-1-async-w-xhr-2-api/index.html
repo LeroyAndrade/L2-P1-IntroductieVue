@@ -9,21 +9,24 @@
 <body>
 
     <header class="masthead">
-        <h1>Wat trekt vandaag uw interesse?</h1>
+        <h1>Welke object, in het Engels geschreven, trekt vandaag uw interesse?</h1>
 
         <div class="site-container">
             <form id="search-form" action="#">
-                <label for="search-keyword" class="visuallyhidden">Wat trekt vandaag uw interesse?</label>
-                <input id="search-keyword" type="text" name="search-keyword" placeholder="Bijvoorbeeld ...Qwantum" required>
+                <label for="search-keyword" class="visuallyhidden">Welke object, in het Engels geschreven, trekt vandaag uw interesse?</label>
+                <input id="search-keyword" type="text" name="search-keyword" placeholder="Welke object, in het Engels geschreven, trekt vandaag uw interesse?" required>
                 <input id="submit-btn" type="submit" value="Submit">
             </form>
         </div>
     </header>
 
     <div class="site-container">
+        <p>De volgende afbeelding komt vanuit de Unsplash API<p>
         <div id="response-container"></div>
-    </div>
 
+        <p>De volgende Tekst komt vanuit de New York Times API<p>
+        <article id="NewYorkTimes"></article><br>
+    </div>
     <script src="app.js"></script>
 </body>
 </html>

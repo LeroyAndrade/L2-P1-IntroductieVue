@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Maak Asynchronous Requests</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="../css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+    <script>
+        class Dieren{
+        //Geef een paramater zoals je dat gewend bent in OOP
+        constructor(naam){
+            this.naam = naam;
+        }
+        //Maak een methode
+        HoudVan(){
+             document.write(this.naam + ' houd van' + `<b>`+ ' voedsel ' +`</b>`);
+        }
+    }
+//Leeuw
+    //Extends betekend dat je een child, de parrent class, laat overwriten
+    class Leeuw extends Dieren{
+      //wanneer, HoudVan wordt verwijderd in de child class(Leeuw), dan krijg je de waarde van de methode van de parrent class.
+      // Er wordt als eerste gekeken in de Leeuw class, of er een methode is (HoudVan), zo niet, dan zoekt het in de parrent class, en gebruikt het die methode.//
+        //this in de parrent heeft de 'name' parameter en dat is dynamisch
+          constructor(naam){
+            super(naam);
+          }
+
+          HoudVan(){
+            super.HoudVan();//dit roept   de parrent class: Dieren.HoudVan() op regel 12, 18 en 47. Dit betekend dat het bericht op regel 19 +, wordt gecombineerd met #34
+            document.write(' en houd van rouw vlees'+`<br/>`);
+        }
+    }
+
+
+/*Het gebruik HoudVan
+      constructor(naam){
+        super(naam);
+      }
+  in een child class moet ik nog doen onderzoeken, de voorbeeld maakt er gebruik van, alleen werkt de code ook zonder
+  Verder verteld de ene documentatie het wel en de ander weer niet.
+*/
+
+//Penguin
+    class Penguin extends Dieren{
+
+      HoudVan(){
+        document.write(this.naam + " houd van vis");
+      }
+    }
+
+    //maak een nieuw instantie
+    const Simba = new Leeuw('Simba');
+      Simba.HoudVan();
+
+    const Skipper = new Penguin('Skipper');
+      Skipper.HoudVan();
+
+    </script>
+</body>
+</html>

@@ -14,7 +14,7 @@
 
   /*Unsplash API*/
     const unsplashRequest = new XMLHttpRequest();
-    unsplashRequest.open('GET', `https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`);
+    unsplashRequest.open('GET', `https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`,true);
     unsplashRequest.onload = addImage;
     unsplashRequest.onError = function (err) {
        requestError(err, 'image');
@@ -25,7 +25,7 @@
 
 /*New York times API*/
     const articleRequest = new XMLHttpRequest();
-    articleRequest.open('GET', `http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchedForText}&api-key=kBVnW80vnlxFA93V2kSr6apRC4nSgUA1`);
+    articleRequest.open('GET', `http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchedForText}&api-key=kBVnW80vnlxFA93V2kSr6apRC4nSgUA1`,true);
     articleRequest.onError = function (err) {
        requestError(err, 'article');
        console.log('NY times error');
@@ -36,8 +36,8 @@
 
 function addImage()
     {
-    //debugger; via   debugger; krijg je in  netwerk/headers,     het totaal va 13 paginas te zien in het object!
-        //Omdat ik groen status 200 krijg, ga ik nu verder met het schrijven van wat er gebeuren moet by OK response.
+    //debugger; via   debugger; krijg je in  netwerk/headers,     het totaal va 13 paginas te zien in het object
+        //Omdat ik groen status 200 krijg en 304, ga ik nu verder met het schrijven van wat er gebeuren moet by OK response.
         let htmlContent= '';
         const data = JSON.parse(this.responseText);
         if (data && data.results && data.results[0])
@@ -58,12 +58,12 @@ function addImage()
         responseContainer.insertAdjacentHTML('afterbegin', htmlContent);
     }
 
+    /*New York Times*/
   function articleRequestOK(){
     const NyTData= JSON.parse(this.responseText);
     const nyTDataArtikel = NyTData.response.docs[0];
 
-      document.getElementById('NewYorkTimes').innerText = nyTDataArtikel.lead_paragraph
-
+      document.getElementById('NewYorkTimes').innerText = nyTDataArtikel.abstract;
 
   }
     })();

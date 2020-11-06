@@ -20,3 +20,4 @@ const data = JSON.parse( this.responseText ); // converteer data van JSON naar e
 console.log( data );
 } asyncRequestObject.onload = handleSuccess;
 
+ 

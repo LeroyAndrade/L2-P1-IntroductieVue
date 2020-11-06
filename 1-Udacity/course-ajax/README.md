@@ -1,6 +1,11 @@
 #Live url: les 1 - API
 http://firesofdestruction.nl/UnsplashAPI/
 
+Om te zien dat ik ook begrijp, wat er op papier staat, heb ik het verwoord:
+Notitie 1: https://github.com/LeroyAndrade/L2-P1-IntroductieVue/blob/master/1-Udacity/course-ajax/1-Eigen-notitie-XMLHTTPRequest.txt
+Notitie 2: https://github.com/LeroyAndrade/L2-P1-IntroductieVue/blob/master/1-Udacity/course-ajax/2-Eigen-notitie-API%26Jason.txt
+
+
 # Ajax
 
 This is the repo for [Udacity's Ajax course](). The course covers making asynchronous requests using three different methods:

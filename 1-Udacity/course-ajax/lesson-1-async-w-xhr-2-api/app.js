@@ -39,11 +39,12 @@ function addImage()
     //debugger; via   debugger; krijg je in  netwerk/headers,     het totaal va 13 paginas te zien in het object
         //Omdat ik groen status 200 krijg en 304, ga ik nu verder met het schrijven van wat er gebeuren moet by OK response.
         let htmlContent= '';
+        
+    //1: converteer opgehaalde data naar een object
         const data = JSON.parse(this.responseText);
         if (data && data.results && data.results[0])
         {
-        //1: converteer opgehaalde data naar een object
-
+ 
             //via de JSON reply tab in dev-console -> netwerk --> antwoord, zie je het object met de naam: results
         const firstImage = data.results[0];
 
